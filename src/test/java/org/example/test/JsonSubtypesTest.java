@@ -25,6 +25,7 @@ class JsonSubtypesTest extends MongojackTestCase {
         final PolitePerson politePerson = new PolitePerson(1); // Person with an "int" politeness
         final GrumpyPerson grumpyPerson = new GrumpyPerson(0.1); // Person with a "double" politeness
 
+        // The serialize/deserialize cycle works when just plain Jackson
         assertInstanceOf(GrumpyPerson.class, objectMapper.readValue(objectMapper.writeValueAsString(grumpyPerson), Person.class));
         assertInstanceOf(PolitePerson.class, objectMapper.readValue(objectMapper.writeValueAsString(politePerson), Person.class));
 
